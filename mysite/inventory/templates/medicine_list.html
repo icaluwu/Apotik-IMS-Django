@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Daftar Obat</h1>
+    <a href="{% url 'medicine_create' %}" class="btn btn-primary mb-3">Tambah Obat</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nama Obat</th>
+                <th>Kategori</th>
+                <th>Stok</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicine in medicines %}
+            <tr>
+                <td>{{ medicine.name }}</td>
+                <td>{{ medicine.category.name }}</td>
+                <td>{{ medicine.stock }}</td>
+                <td>
+                    <a href="{% url 'medicine_update' pk=medicine.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'medicine_delete' pk=medicine.pk %}" class="btn btn-sm btn-danger">Hapus</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

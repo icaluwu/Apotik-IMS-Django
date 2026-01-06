@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Daftar Kategori</h1>
+    <a href="{% url 'category_create' %}" class="btn btn-primary mb-3">Tambah Kategori</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nama Kategori</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{% url 'category_update' pk=category.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'category_delete' pk=category.pk %}" class="btn btn-sm btn-danger">Hapus</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

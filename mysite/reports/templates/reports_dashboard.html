@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Reports Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sales Report</h5>
+                    <p class="card-text">Generate a report of all sales within a specified date range.</p>
+                    <a href="{% url 'sales_report' %}" class="btn btn-primary">Generate</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Purchase Report</h5>
+                    <p class="card-text">Generate a report of all purchases within a specified date range.</p>
+                    <a href="{% url 'purchase_report' %}" class="btn btn-primary">Generate</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Profit/Loss Report</h5>
+                    <p class="card-text">Calculate profit or loss within a specified date range.</p>
+                    <a href="{% url 'profit_loss_report' %}" class="btn btn-primary">Generate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

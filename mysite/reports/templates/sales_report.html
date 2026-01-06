@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Sales Report</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+
+    {% if sales %}
+    <h2 class="mt-4">Results</h2>
+    <div class="alert alert-info">
+        Total Revenue: {{ total_revenue }}
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+            <tr>
+                <td>{{ sale.date }}</td>
+                <td>{{ sale.medicine.name }}</td>
+                <td>{{ sale.quantity }}</td>
+                <td>{{ sale.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

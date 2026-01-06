@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Hapus Pembelian</h1>
+    <p>Apakah Anda yakin ingin menghapus pembelian {{ object }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Hapus</button>
+        <a href="{% url 'purchase_list' %}" class="btn btn-secondary">Batal</a>
+    </form>
+</div>
+{% endblock %}

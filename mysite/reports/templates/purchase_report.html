@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Purchase Report</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+
+    {% if purchases %}
+    <h2 class="mt-4">Results</h2>
+    <div class="alert alert-info">
+        Total Expenditure: {{ total_expenditure }}
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase.date }}</td>
+                <td>{{ purchase.medicine.name }}</td>
+                <td>{{ purchase.quantity }}</td>
+                <td>{{ purchase.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

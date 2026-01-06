@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Profit/Loss Report</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+
+    {% if request.method == 'POST' and form.is_valid %}
+    <h2 class="mt-4">Results</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total Revenue</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_revenue }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header">Total Expenditure</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_expenditure }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white {% if profit_loss >= 0 %}bg-primary{% else %}bg-warning{% endif %} mb-3">
+                <div class="card-header">Profit/Loss</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ profit_loss }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

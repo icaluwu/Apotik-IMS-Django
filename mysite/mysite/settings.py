@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-^=6-_k)oh!n9-fpcd1qd0rf(!8y2!!8cc*so1if(!*ydv@*_dc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://8000-firebase-apotek-1767649401464.cluster-6dx7corvpngoivimwvvljgokdw.cloudworkstations.dev']
 
 # Application definition
 
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'inventory',
+    'reports',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'inventory/templates', BASE_DIR / 'reports/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

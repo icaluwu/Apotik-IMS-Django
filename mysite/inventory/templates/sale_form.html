@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">{% if form.instance.pk %}Ubah{% else %}Tambah{% endif %} Penjualan</h1>
+    <form method="post" class="card p-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+        <a href="{% url 'sale_list' %}" class="btn btn-secondary mt-3">Batal</a>
+    </form>
+</div>
+{% endblock %}

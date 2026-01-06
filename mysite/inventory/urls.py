@@ -24,4 +24,10 @@ urlpatterns = [
     path('sales/create/', views.sale_create, name='sale_create'),
     path('sales/<int:pk>/update/', views.sale_update, name='sale_update'),
     path('sales/<int:pk>/delete/', views.sale_delete, name='sale_delete'),
+
+    # Patient URLs
+    path('patients/', views.patient_list, name='patient_list'),
+    path('patients/create/', views.patient_create, name='patient_create'),
+    path('patients/<int:pk>/update/', views.patient_update, name='patient_update'),
+    path('patients/<int:pk>/delete/', views.patient_delete, name='patient_delete'),
 ]

@@ -40,6 +40,15 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3 mt-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total Pasien</h5>
+                    <p class="card-text fs-4">{{ patient_count }}</p>
+                    <a href="{% url 'patient_list' %}" class="btn btn-primary">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
